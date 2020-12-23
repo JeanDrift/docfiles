@@ -4,6 +4,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
+Plug 'ghifarit53/tokyonight-vim'
 
 "visual
 Plug 'yggdroot/indentline'
@@ -21,7 +22,7 @@ Plug 'junegunn/gv.vim'
 "Functionality
 Plug 'scrooloose/nerdtree'
 "Plug 'christoomey/vim-tmux-navigator'
-Plug 'KabbAmine/vCoolor.vim'
+Plug 'KabbAmine/vCoolor.vim'    "<Alt-C> insertar color--alt-R rgb--Alt-V hsl--Alt-W rgba
 Plug 'easymotion/vim-easymotion'
 
 "code modification
@@ -40,7 +41,7 @@ set smartindent
 set numberwidth=1
 set number
 set rnu
-set nowrap
+"set nowrap
 set noswapfile
 set nobackup
 set incsearch
@@ -61,11 +62,25 @@ let mapleader = " "
 
 "Theme
 let g:python_highlight_all = 1
+set background=dark
 set termguicolors
-let ayucolor="dark"
-"let g:gruvbox_contrast_dark="hard"
-colorscheme ayu
+let ayucolor="dark" " available:light, mirage, dark
+let g:gruvbox_contrast_dark="hard" " available: soft, medium, hard
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+let g:tokyonight_transparent_background = 1
+colorscheme tokyonight
 
+hi! Normal ctermbg=NONE guibg=NONE 
+hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE 
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+ 
+"Atajos de teclado
+imap ii <Esc>
+nmap <C-a> <Esc>ggVG<CR>  
 
 nmap <F5> :source ~/.config/nvim/init.vim<CR>
 vmap <F5> :source ~/.config/nvim/init.vim<CR>
@@ -83,11 +98,10 @@ nnoremap <silent> <down> :resize -5<CR>
 nnoremap <leader>e :e $MYVIMRC<CR>
 
 "Uso del terminal
-vnoremap <leader>ter :split<CR>:ter<CR>:resize 10<CR>
-nnoremap <leader>ter :split<CR>:ter<CR>:resize 10<CR>
+nnoremap <leader>te :terminal<CR>
+"vnoremap <leader>te :sp<CR>:ter<CR>:resize 10<CR>
+"nnoremap <leader>te :sp<CR>:ter<CR>:resize 10<CR>
 tnoremap <Esc> <C-\><C-n>
-" Moverse al buffer siguiente con <líder> + k
-nnoremap <S-k> :bnext<CR>
 
 tnoremap <A-h> <C-\><C-N><C-w>h
 tnoremap <A-j> <C-\><C-N><C-w>j
@@ -101,6 +115,9 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
+
+" Moverse al buffer siguiente con <líder> + k
+nnoremap <S-k> :bnext<CR>
 
 " Moverse al buffer anterior con <líder> + j
 nnoremap <S-j> :bprevious<CR>
@@ -119,6 +136,7 @@ nnoremap <leader>sp :sp<CR>
 
 "guardar y salir automaticamente
 nnoremap <leader>x :x<CR>
+
 "NERDTree
 "autocmd StdinReadPre * let s:std_in=1
 "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -144,7 +162,8 @@ endif
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
 let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
 let g:airline_powerline_fonts = 1 " Modifica los separadores para que tengan forma de triangulos
-let g:airline_theme='tomorrow'
+"let g:lightline = {'colorscheme' : 'tokyonight'}
+"let g:airline_theme='tokyonight'
 
 "signify
 " Change these if you want
@@ -181,8 +200,6 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 
 "indentline
 let g:indentLine_char_list = ['│', '┊']
-
-
 
 "Coc Config
 "Prettier
