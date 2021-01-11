@@ -1,35 +1,35 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 "themes
-Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
-Plug 'joshdick/onedark.vim'
-Plug 'ghifarit53/tokyonight-vim'
-
-"Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'morhetz/gruvbox'
+"Plug 'ayu-theme/ayu-vim'
+"Plug 'joshdick/onedark.vim'
+"Plug 'ghifarit53/tokyonight-vim'
 
 ""Functionality
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'KabbAmine/vCoolor.vim'    "<Alt-C> insertar color--alt-R rgb--Alt-V hsl--Alt-W rgba
-Plug 'easymotion/vim-easymotion'
+"Plug 'preservim/nerdtree'
+"Plug 'Xuyuanp/nerdtree-git-plugin'
+"Plug 'ryanoasis/vim-devicons'
+"Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"Plug 'KabbAmine/vCoolor.vim'    "<Alt-C> insertar color--alt-R rgb--Alt-V hsl--Alt-W rgba
+"Plug 'easymotion/vim-easymotion'
+
+""visual
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+"Plug 'norcalli/nvim-colorizer.lua'
 
 ""Git integration
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'junegunn/gv.vim'
-"
+"Plug 'mhinz/vim-signify'
+"Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-rhubarb'
+"Plug 'junegunn/gv.vim'
+
 ""code modification
-Plug 'yggdroot/indentline'
-Plug 'preservim/nerdcommenter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'yggdroot/indentline'
+"Plug 'preservim/nerdcommenter'
+"Plug 'jiangmiao/auto-pairs'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
@@ -53,9 +53,9 @@ set termguicolors
 set splitbelow
 set splitright
 set nowrap
-set scrolloff=8
 
 "Theme
+set background=dark
 let ayucolor="dark" " available:light, mirage, dark
 let g:gruvbox_contrast_dark="hard" " available: soft, medium, hard
 let g:tokyonight_style = 'night' " available: night, storm
@@ -63,16 +63,16 @@ let g:tokyonight_enable_italic = 1
 let g:tokyonight_transparent_background = 1
 colorscheme onedark   " onedark, tokyonight, ayu, gruvbox
 
-hi Normal ctermbg=NONE guibg=NONE
-"hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+hi Normal ctermbg=NONE guibg=NONE 
+"hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE 
 "let g:limelight_conceal_ctermfg = 'gray'
 "let g:limelight_conceal_ctermfg = 240
 "let g:limelight_conceal_guifg = 'DarkGray'
 "let g:limelight_conceal_guifg = '#777777'
-
+ 
 "Mapeo de la barra de estado airline
 let g:airline#extensions#tabline#enabled = 1  " Mostrar buffers abiertos (como pestañas)
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#fnamemod = ':t'  " Mostrar sólo el nombre del archivo
 let g:airline_powerline_fonts = 1 " Modifica los separadores para que tengan forma de triangulos
 let g:airline_theme='onedark'
 
