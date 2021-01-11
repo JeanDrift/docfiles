@@ -1,6 +1,6 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-""themes
+"""themes
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'joshdick/onedark.vim'
@@ -24,7 +24,7 @@ Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
-"
+
 ""code modification
 Plug 'yggdroot/indentline'
 Plug 'preservim/nerdcommenter'
