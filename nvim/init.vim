@@ -56,6 +56,7 @@ set nowrap
 set scrolloff=8
 
 "Theme
+set background=dark
 let ayucolor="dark" " available:light, mirage, dark
 let g:gruvbox_contrast_dark="hard" " available: soft, medium, hard
 let g:tokyonight_style = 'night' " available: night, storm
