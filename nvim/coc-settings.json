@@ -3,7 +3,11 @@
     "css",
     "html",
     "json",
-    "markdown, javascript, typescript, typescriptreact, javascriptreact, typescript.tsx"
+    "markdown",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
   ],
   "coc.preferences.extensionUpdateCheck": "daily"
 }
