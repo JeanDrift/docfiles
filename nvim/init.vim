@@ -14,13 +14,13 @@ Plug 'ryanoasis/vim-devicons'
 ""Functionality
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'KabbAmine/vCoolor.vim'    "<Alt-C> insertar color--alt-R rgb--Alt-V hsl--Alt-W rgba
 Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-rooter'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'brooth/far.vim'
 
 ""Git integration
 Plug 'mhinz/vim-signify'
@@ -32,6 +32,7 @@ Plug 'junegunn/gv.vim'
 Plug 'yggdroot/indentline'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
+Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
@@ -51,12 +52,15 @@ set incsearch
 set clipboard=unnamedplus
 set encoding=utf-8
 set ignorecase
+set smartcase
 set cursorline
 set termguicolors
 set splitbelow
 set splitright
 set nowrap
 set scrolloff=8
+set lazyredraw            " improve scrolling performance when navigating through large results
+
 
 "Theme
 set background=dark
@@ -83,6 +87,9 @@ let g:airline_theme='onedark'
 "nerdtreegit
 let g:NERDTreeGitStatusUseNerdFonts = 1
 
+"Se guardará la sesión automaticamente
+au VimLeavePre * if v:this_session != '' | exec "mks! " . v:this_session | endif
+
 "Atajos de teclado
 let mapleader = " " "selecionar tecla madre
 imap ii <Esc>          "i como tecla de escape 
@@ -102,6 +109,7 @@ nnoremap <leader>w :w<CR>
 "nnoremap <silent> <up> :resize +5<CR>
 "nnoremap <silent> <down> :resize -5<CR>
 nnoremap <leader>e :e $MYVIMRC<CR>
+nnoremap <leader>rn :bufdo %s/$1/$2/ge | update
 
 "Uso del terminal
 nnoremap <leader>te :terminal<CR>
@@ -142,15 +150,24 @@ nnoremap <leader>vs :vsp<CR>
 "hacer un split horizontal
 nnoremap <leader>sp :sp<CR>
 
+" shortcut for far.vim find
+nnoremap <silent> <leader>se   :Farf<cr>
+vnoremap <silent> <leader>se  :Farf<cr>
+
+" shortcut for far.vim replace
+nnoremap <silent> <leader>rn  :Farr<cr>
+vnoremap <silent> <leader>rn  :Farr<cr>
+
 "guardar y salir automaticamente
 nnoremap <leader>x :x<CR>
 
 "NERDTree
 "abrir nerdtree si solo esta este abierto
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 nnoremap <leader><Tab> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1 
+let NERDTreeMinimalUI=1
 
 "let g:NERDTreeDirArrowExpandable = ''
 "let g:NERDTreeDirArrowCollapsible = ''
@@ -178,8 +195,11 @@ nmap <leader>gK 9999<leader>gk
 " highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
 
 "easymotion
-nmap <leader>se <Plug>(easymotion-s2)
+nmap <leader>mm <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase = 1
+
+"colorizer
+lua require'colorizer'.setup()
 
 "Coc Config
 "Prettier
@@ -265,7 +285,7 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+"nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
