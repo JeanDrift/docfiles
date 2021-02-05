@@ -16,11 +16,11 @@ Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'KabbAmine/vCoolor.vim'    "<Alt-C> insertar color--alt-R rgb--Alt-V hsl--Alt-W rgba
-Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'brooth/far.vim'
+Plug 'voldikss/vim-floaterm'
 
 ""Git integration
 Plug 'mhinz/vim-signify'
@@ -44,8 +44,8 @@ set sw=2
 set expandtab
 set smartindent
 set numberwidth=1
-set number  "número"
-set rnu    "relative numbers"
+set number  "número
+set rnu    "relative numbers
 set noswapfile
 set nobackup
 set incsearch
@@ -59,17 +59,17 @@ set splitbelow
 set splitright
 set nowrap
 set scrolloff=8
-set lazyredraw            " improve scrolling performance when navigating through large results
+set lazyredraw            "improve scrolling performance when navigating through large results
 
-
+source $HOME/.config/nvim/plug-config/floaterm.vim
 "Theme
 set background=dark
-let ayucolor="dark" " available:light, mirage, dark
+let ayucolor="mirage" " available:light, mirage, dark
 let g:gruvbox_contrast_dark="hard" " available: soft, medium, hard
-let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_style = 'storm' " available: night, storm
 let g:tokyonight_enable_italic = 1
 let g:tokyonight_transparent_background = 1
-colorscheme onedark   " onedark, tokyonight, ayu, gruvbox
+colorscheme onedark   " one, onedark, tokyonight, ayu, gruvbox
 
 hi Normal ctermbg=NONE guibg=NONE
 "hi NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
@@ -84,16 +84,13 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1 " Modifica los separadores para que tengan forma de triangulos
 let g:airline_theme='onedark'
 
-"nerdtreegit
-let g:NERDTreeGitStatusUseNerdFonts = 1
-
 "Se guardará la sesión automaticamente
 au VimLeavePre * if v:this_session != '' | exec "mks! " . v:this_session | endif
 
 "Atajos de teclado
 let mapleader = " " "selecionar tecla madre
-imap ii <Esc>          "i como tecla de escape 
-nmap <C-a> <Esc>ggVG<CR>    "seleccionar todo 
+imap ii <Esc>
+nmap <C-a> <Esc>ggVG<CR>
 
 nmap <F5> :source ~/.config/nvim/init.vim<CR>
 vmap <F5> :source ~/.config/nvim/init.vim<CR>
@@ -109,7 +106,7 @@ nnoremap <leader>w :w<CR>
 "nnoremap <silent> <up> :resize +5<CR>
 "nnoremap <silent> <down> :resize -5<CR>
 nnoremap <leader>e :e $MYVIMRC<CR>
-nnoremap <leader>rn :bufdo %s/$1/$2/ge | update
+"nnoremap <leader>rn :bufdo %s/$1/$2/ge | update
 
 "Uso del terminal
 nnoremap <leader>te :terminal<CR>
@@ -169,6 +166,9 @@ nnoremap <leader><Tab> :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1 
 let NERDTreeMinimalUI=1
 
+"nerdtreegit
+let g:NERDTreeGitStatusUseNerdFonts = 1
+
 "let g:NERDTreeDirArrowExpandable = ''
 "let g:NERDTreeDirArrowCollapsible = ''
 
@@ -193,10 +193,6 @@ nmap <leader>gK 9999<leader>gk
 " highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00
 " highlight SignifySignDelete ctermfg=black ctermbg=red    guifg=#ffffff guibg=#ff0000
 " highlight SignifySignChange ctermfg=black ctermbg=yellow guifg=#000000 guibg=#ffff00
-
-"easymotion
-nmap <leader>mm <Plug>(easymotion-s2)
-let g:EasyMotion_smartcase = 1
 
 "colorizer
 lua require'colorizer'.setup()
