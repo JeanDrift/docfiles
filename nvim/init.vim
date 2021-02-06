@@ -29,6 +29,7 @@ Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 
 ""code modification
+Plug '907th/vim-auto-save'
 Plug 'yggdroot/indentline'
 Plug 'preservim/nerdcommenter'
 Plug 'jiangmiao/auto-pairs'
@@ -86,6 +87,7 @@ let g:airline_theme='onedark'
 
 "Se guardará la sesión automaticamente
 au VimLeavePre * if v:this_session != '' | exec "mks! " . v:this_session | endif
+let g:auto_save = 1  " enable AutoSave on Vim startup
 
 "Atajos de teclado
 let mapleader = " " "selecionar tecla madre
